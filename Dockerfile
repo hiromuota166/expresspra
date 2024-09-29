@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # MySQL のインストール（オプション: 必要に応じて追加）
-RUN apt-get update && apt-get install -y default-mysql-server
+RUN apt-get update && apt-get install -y mariadb-server
 
 # MySQL ディレクトリの初期化（オプション: 必要に応じて追加）
 RUN mkdir -p /var/lib/mysql && chown -R mysql:mysql /var/lib/mysql
