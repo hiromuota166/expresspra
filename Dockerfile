@@ -13,14 +13,14 @@ RUN npm install
 # アプリケーションのソースコードを全て作業ディレクトリにコピー
 COPY . .
 
-# MySQL のインストール（オプション: 必要に応じて追加）
+# MariaDB のインストール
 RUN apt-get update && apt-get install -y mariadb-server
 
-# MySQL ディレクトリの初期化（オプション: 必要に応じて追加）
+# MariaDB ディレクトリの初期化（必要に応じて追加）
 RUN mkdir -p /var/lib/mysql && chown -R mysql:mysql /var/lib/mysql
 
-# サービス起動時に MySQL をバックグラウンドで起動し、Node.js アプリを実行
-CMD service mysql start && npm start
+# MySQL（MariaDB）サービスを直接バックグラウンドで起動し、Node.js アプリを実行
+CMD mysqld_safe & npm start
 
-# アプリケーションのデフォルトポートを指定（例: 3000）
+# アプリケーションのデフォルトポートを指定
 EXPOSE 8080
