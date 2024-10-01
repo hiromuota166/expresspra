@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y mariadb-server
 RUN mkdir -p /var/lib/mysql && chown -R mysql:mysql /var/lib/mysql
 
 # MySQL（MariaDB）サービスを直接バックグラウンドで起動し、Node.js アプリを実行
-CMD mysqld_safe & npm start
+CMD mysqld_safe & npm start & ["node", "app.js"]
 
 # アプリケーションのデフォルトポートを指定
 EXPOSE 8080
