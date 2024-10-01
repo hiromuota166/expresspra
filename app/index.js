@@ -76,7 +76,6 @@ app.delete("/animals/:id", (req, res) => {
   });
 });
 // サーバーの起動
-const port = 3001;
-app.listen(port, () => {
-  console.log(`Yey, your server is running on port ${port}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server is running on port ${PORT}`);
 });
